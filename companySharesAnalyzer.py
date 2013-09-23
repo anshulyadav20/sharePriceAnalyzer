@@ -29,7 +29,7 @@ class CompanyShareAnalyzer:
                         raise DataInconsistantException("Please check the data inside the file")
 	except IOError, err:
             print "IOError : %r" %(err)
-            raise IOError("File dosent Exist")
+            raise IOError("File dosen't Exist")
 
     def getResultSharePriceAnalysis(self):
         '''
