@@ -1,7 +1,9 @@
 from companyShareAnalyzerBean import CompanyDataBean
+class DataInconsistantException(Exception):
+    pass
 class CompanyShareAnalyzer:
     ''' This is the main analysis class that does the overall analysis '''
-    def __init__(self,path='shareData.csv'):
+    def __init__(self,path):
         self.__path__=path
         self.result_=None
     def readFile(self):
@@ -14,12 +16,23 @@ class CompanyShareAnalyzer:
             with open(self.__path__, 'r') as f:
                 for ln in f:
                     ln = ln.split(',') # Removing the last ','
-                    if self.result_ == None: # first time to read all company names
+                    if self.result_ == None:
+                        '''
+                             first time to read all company names
+                             and set the share value to 0
+                        '''
                         self.result_= [ CompanyDataBean(x,0,None,0) for x in ln[2:]]
                         continue
-                    yield (ln[:2],ln[2:])
+                    if len(self.result_) == len(ln[2:]):
+                        yield (ln[:2],ln[2:])
+                    else:
+                        raise DataInconsistantException("Data is inconsistant")
 	except IOError, err:
+            print "IOError : %r" %(err)
+            raise IOError("File dosent Exist")
+        except DataInconsistantException, err:
             print "Exception : %r" %(err)
+            raise DataInconsistantException("Please check the data inside the file") 
             
     def getResultSharePriceAnalysis(self):
         '''
@@ -29,6 +42,10 @@ class CompanyShareAnalyzer:
             for i, val in enumerate(shareValue):
                if self.result_[i] >  val:
                    self.result_[i]=CompanyDataBean(self.result_[i].name,val,period[1],period[0])
-        for i in self.result_ :
+        return self.result_
+    
+    def printResults(self):
+    	''' This is just to print the results '''
+    	for i in self.result_ :
             print i
-        return self.result_    
+        
