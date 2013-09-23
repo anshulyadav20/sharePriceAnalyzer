@@ -5,8 +5,10 @@ class TestCompanyShareAnalyzer(unittest.TestCase):
     This is a test class to test CompanyShareAnalyzer class
     '''
     def setUp(self):
+        print "Inside the Test case BEGIN "
         shareAnalyzer = CompanyShareAnalyzer("shareData.csv")
         self.result=shareAnalyzer.getResultSharePriceAnalysis()
+        print "Inside the Test case END"
     def test_share_value(self):
         '''   Company 9 max price is 100      '''
         self.assertEquals(100, self.result[8].value)
