@@ -25,7 +25,7 @@ a) List for each Company year and month in which the share price was highest.
 b) Submit a unit test with sample data to support your solution.  
 
 
-USAGE :
+Usage :
 ========
 extract all the attached files in a directory and run the following command :
 <br>
