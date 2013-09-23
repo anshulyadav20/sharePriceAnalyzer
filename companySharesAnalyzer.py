@@ -26,14 +26,11 @@ class CompanyShareAnalyzer:
                     if len(self.result_) == len(ln[2:]):
                         yield (ln[:2],ln[2:])
                     else:
-                        raise DataInconsistantException("Data is inconsistant")
+                        raise DataInconsistantException("Please check the data inside the file")
 	except IOError, err:
             print "IOError : %r" %(err)
             raise IOError("File dosent Exist")
-        except DataInconsistantException, err:
-            print "Exception : %r" %(err)
-            raise DataInconsistantException("Please check the data inside the file") 
-            
+
     def getResultSharePriceAnalysis(self):
         '''
         The main computation happens here and the final result is returned.
