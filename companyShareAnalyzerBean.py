@@ -10,4 +10,4 @@ class CompanyDataBean:
         return (int(value) > self.value) 
     def __str__(self):
         ''' The string representation of this class object'''
-        return "Company Name : %8s ShareValue : %5s  Month/Year : %2s/%3d" % (self.name, self.value, self.month,self.year)
+        return "Company Name : %10s ShareValue : %6s  Month/Year : %4s/%4d" % (str(self.name).strip(), self.value, self.month,self.year)
