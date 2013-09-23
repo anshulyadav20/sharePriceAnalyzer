@@ -1,4 +1,4 @@
 sharePriceAnalyzer
 ==================
 
-Assignment from avana
+Assignment from avana for GlobalLogic
