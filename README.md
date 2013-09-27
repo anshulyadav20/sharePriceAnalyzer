@@ -1,7 +1,7 @@
 Share Price Analyzer
 ==================
 
-Assignment from avedaindia.net for GobalLogic
+Assignment from avedaindia.net for GobalLogic (Google Consultant)
 
  Q)   Consider Share prices for a N number of companies given for each month since year     
  
